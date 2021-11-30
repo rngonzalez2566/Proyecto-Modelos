@@ -7,6 +7,7 @@ import { CintaComponent } from './components/cinta/cinta.component';
 import { BrazoComponent } from './components/brazo/brazo.component';
 import { PrensaComponent } from './components/prensa/prensa.component';
 import { MainComponent } from './components/main/main.component';
+import {  HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MainComponent } from './components/main/main.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

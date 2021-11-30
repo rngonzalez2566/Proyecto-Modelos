@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { prensa_services } from 'src/Services/prensa';
 
 @Component({
   selector: 'app-prensa',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrensaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private prensaService:prensa_services) { }
 
-  ngOnInit(): void {
+  public estado:boolean = false;
+
+  public async ngOnInit() {
+    await this.prensaService.ObtenerPrensa(1).then((res:any)=>{
+      this.estado = res.encendido;    
+    })
+  }
+
+  public async prenderPrensa(){
+    await this.prensaService.EncenderPrensa(1).then((res:any)=>{
+      this.estado = true;    
+    })
+  }
+
+  public async apagarPrensa(){
+    await this.prensaService.ApagarPrensa(1).then((res:any)=>{
+      this.estado = false;    
+    })
   }
 
 }

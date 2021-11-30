@@ -4,10 +4,10 @@
             Prensa
         </div>
         <div class="btn-group btn-group-toggle" data-toggle="buttons2">
-            <input type="radio" class="btn-check" name="options-outlined2" id="success-outlined2" autocomplete="off" >
+            <input type="radio" class="btn-check" name="options-outlined2" id="success-outlined2" autocomplete="off" [checked]="estado == true" (click)="prenderPrensa()">
             <label class="btn btn-outline-success rounded-0" for="success-outlined2">On</label>
             
-            <input type="radio" class="btn-check" name="options-outlined2" id="danger-outlined2" autocomplete="off" checked>  
+            <input type="radio" class="btn-check" name="options-outlined2" id="danger-outlined2" autocomplete="off" [checked]="estado == false" (click)="apagarPrensa()">  
             <label class="btn btn-outline-danger rounded-0" for="danger-outlined2">Off</label>
         </div>
         <div class="card-body">

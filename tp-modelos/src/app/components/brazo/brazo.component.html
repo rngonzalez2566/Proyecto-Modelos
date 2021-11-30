@@ -4,10 +4,10 @@
             Brazo
         </div>
         <div class="btn-group btn-group-toggle" data-toggle="buttons1">
-            <input type="radio" class="btn-check" name="options-outlined1" id="success-outlined1" autocomplete="off" >
+            <input type="radio" class="btn-check" name="options-outlined1" id="success-outlined1" autocomplete="off" [checked]="estado == true" (click)="prenderBrazo()">
             <label class="btn btn-outline-success rounded-0" for="success-outlined1">On</label>
             
-            <input type="radio" class="btn-check" name="options-outlined1" id="danger-outlined1" autocomplete="off" checked>
+            <input type="radio" class="btn-check" name="options-outlined1" id="danger-outlined1" autocomplete="off" [checked]="estado == false" (click)="apagarBrazo()">
             <label class="btn btn-outline-danger rounded-0" for="danger-outlined1">Off</label>
         </div>
         <div class="card-body">

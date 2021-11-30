@@ -4,10 +4,10 @@
                 Cinta
             </div>
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <input type="radio" class="btn-check " name="options-outlined" id="success-outlined" autocomplete="off">
+                <input type="radio" class="btn-check " name="options-outlined" id="success-outlined" autocomplete="off" [checked]="estado == true" (click)="prenderCinta()">
                 <label class="btn btn-outline-success rounded-0" for="success-outlined">On</label>
                 
-                <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off" checked> 
+                <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off"  [checked]="estado == false" (click)="apagarCinta()"> 
                 <label class="btn btn-outline-danger rounded-0" for="danger-outlined">Off</label>
             </div>
             <div class="card-body">
