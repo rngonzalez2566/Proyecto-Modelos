@@ -8,6 +8,7 @@ import { BrazoComponent } from './components/brazo/brazo.component';
 import { PrensaComponent } from './components/prensa/prensa.component';
 import { MainComponent } from './components/main/main.component';
 import {  HttpClientModule } from '@angular/common/http';
+import { BultoComponent } from './components/bulto/bulto.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {  HttpClientModule } from '@angular/common/http';
     CintaComponent,
     BrazoComponent,
     PrensaComponent,
-    MainComponent
+    MainComponent,
+    BultoComponent
   ],
   imports: [
     BrowserModule,

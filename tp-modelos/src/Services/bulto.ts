@@ -28,9 +28,9 @@ export class bulto_services {
       });
   }
 
-  public async CrearBulto(){
+  public async CrearBulto(body:any){
     return await new Promise<any>((resolve, reject) => {
-        this.http.post(`${this.url}CrearBulto`,this.helperServices.header_peticiones())
+        this.http.post(`${this.url}CrearBulto`,body,this.helperServices.header_peticiones())
           .subscribe((res: any) => {
             if (res.statusCode != 200) {
               reject(res);              
@@ -60,7 +60,7 @@ export class bulto_services {
 
   public async EliminarBulto(){
     return await new Promise<any>((resolve, reject) => {
-        this.http.post(`${this.url}EliminarBulto`,this.helperServices.header_peticiones())
+        this.http.put(`${this.url}EliminarBulto`,this.helperServices.header_peticiones())
           .subscribe((res: any) => {
             if (res.statusCode != 200) {
               reject(res);              

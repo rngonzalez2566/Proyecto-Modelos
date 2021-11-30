@@ -1,0 +1,29 @@
+    <div class="card border-4 border-dark rounded">
+        <div class="card-header text-center  bg-dark text-white rounded-0">
+            Bulto
+        </div>
+        <div class="card-body ">
+            
+            <div class="container text-center" >
+                <div class="row">
+                    <div class="col-sm-12 mx-auto ">
+                        <div class="input-group">
+                            <span class="input-group-prepend">
+                                <button class="btn btn-success  mb-2" (click)="crearBulto()" >Crear Bulto</button>
+                            </span>
+                            
+                            <span class="input-group-append">
+                                <button class="btn btn-danger"  (click)="eliminarBulto()">Eliminar Bulto</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container col-md-6 text-center">
+                <label for="inputZip" class="form-label text-center">Cantidad</label>
+                <input type="text" class="form-control text-center" id="inputZip" readonly value="{{bultos}}">
+            </div>   
+        </div>
+    </div>
+

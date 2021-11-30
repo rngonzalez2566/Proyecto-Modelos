@@ -11,10 +11,14 @@ export class CintaComponent implements OnInit {
   constructor(private cintaService:cinta_services) { }
 
   public estado:boolean = false;
+  public bultosCinta:number = 0;
 
   public async ngOnInit() {
     await this.cintaService.obtenerCinta(1).then((res:any)=>{
       this.estado = res.encendido;    
+    })
+    await this.cintaService.ObtenerCintaBultosActivos().then((res:any)=>{
+      this.bultosCinta = res.length
     })
   }
 
