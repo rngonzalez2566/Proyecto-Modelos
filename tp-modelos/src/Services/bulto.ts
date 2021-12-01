@@ -10,8 +10,11 @@ import { helper_services } from './helper';
 )
 export class bulto_services {
 
+  
   constructor(private http:HttpClient, private helperServices:helper_services) { }
+  
   private url:string = environment.api_gateway;
+  public bultos:number = 0;
   
   public async ObtenerBulto(id:number){
     return await new Promise<any>((resolve, reject) => {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { cinta_services } from 'src/Services/cinta';
+import { bulto_services } from 'src/Services/bulto';
 
 @Component({
   selector: 'app-cinta',
@@ -8,7 +9,7 @@ import { cinta_services } from 'src/Services/cinta';
 })
 export class CintaComponent implements OnInit {
 
-  constructor(private cintaService:cinta_services) { }
+  constructor(private cintaService:cinta_services, private bultoServices:bulto_services) { }
 
   public estado:boolean = false;
   public bultosCinta:number = 0;
@@ -17,9 +18,7 @@ export class CintaComponent implements OnInit {
     await this.cintaService.obtenerCinta(1).then((res:any)=>{
       this.estado = res.encendido;    
     })
-    await this.cintaService.ObtenerCintaBultosActivos().then((res:any)=>{
-      this.bultosCinta = res.length
-    })
+    this.obtenerbultos();
   }
 
   public async prenderCinta(){
@@ -34,4 +33,23 @@ export class CintaComponent implements OnInit {
     })
   }
 
+  public async agregarBultoACinta(){
+    await this.cintaService.agregarBultoACinta(1).then((res:any)=>{
+      this.estado = false;    
+    })
+    this.obtenerbultos();
+  }
+
+  public async obtenerbultos() {
+    await this.cintaService.ObtenerCintaBultosActivos().then((res:any)=>{
+      this.bultosCinta = res.length 
+    })
+  }
+
+  public async obtenerbultos2() {
+    await this.bultoServices.ObtenerTodosLosBultos().then((res:any)=>{
+      this.bultoServices.bultos = res.length  
+      
+    })
+  }
 }

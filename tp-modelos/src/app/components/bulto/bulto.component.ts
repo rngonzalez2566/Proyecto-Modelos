@@ -10,7 +10,8 @@ export class BultoComponent implements OnInit {
 
   constructor(private bultoServices:bulto_services) { }
 
-  public bultos:number = 0;
+  
+  public bultos:number = this.bultoServices.bultos;
 
   public async ngOnInit() {
     await this.obtenerbultos();
@@ -28,7 +29,8 @@ export class BultoComponent implements OnInit {
 
   public async obtenerbultos() {
     await this.bultoServices.ObtenerTodosLosBultos().then((res:any)=>{
-      this.bultos = res.length  
+      this.bultoServices.bultos = res.length  
+      this.bultos = this.bultoServices.bultos ;
     })
   }
 

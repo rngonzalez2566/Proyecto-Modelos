@@ -104,6 +104,20 @@ export class cinta_services {
       });
   }
   
+  public async agregarBultoACinta(id:number){
+    return await new Promise<any>((resolve, reject) => {
+        this.http.post(`${this.url}agregarBultoACinta/${id}`,this.helperServices.header_peticiones())
+          .subscribe((res: any) => {
+            if (res.statusCode != 200) {
+              reject(res);              
+            }          
+            resolve(res.data);
+  
+          }, err => {
+            reject(err);
+          })
+      });
+  }
   
  
 }
