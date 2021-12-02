@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { helper_services } from './helper';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable(
     {
@@ -12,6 +13,7 @@ export class brazo_services {
 
   constructor(private http:HttpClient, private helperServices:helper_services) { }
   private url:string = environment.api_gateway;
+  public observerBrazo: Subject<number> = new BehaviorSubject<number>(0);
   
   public async ObtenerBrazo(id:number){
     return await new Promise<any>((resolve, reject) => {
@@ -73,9 +75,9 @@ export class brazo_services {
       });
   }
 
-  public async AgregarBultoABrazo(bulto:number,id:number){
+  public async AgregarBultoABrazo(id:number){
     return await new Promise<any>((resolve, reject) => {
-        this.http.post(`${this.url}AgregarBultoABrazo/${bulto}/${id}`,this.helperServices.header_peticiones())
+        this.http.post(`${this.url}AgregarBultoABrazo/${id}`,this.helperServices.header_peticiones())
           .subscribe((res: any) => {
             if (res.statusCode != 200) {
               reject(res);              

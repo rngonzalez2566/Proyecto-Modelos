@@ -9,6 +9,7 @@ import { PrensaComponent } from './components/prensa/prensa.component';
 import { MainComponent } from './components/main/main.component';
 import {  HttpClientModule } from '@angular/common/http';
 import { BultoComponent } from './components/bulto/bulto.component';
+import { PilaComponent } from './pila/pila/pila.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { BultoComponent } from './components/bulto/bulto.component';
     BrazoComponent,
     PrensaComponent,
     MainComponent,
-    BultoComponent
+    BultoComponent,
+    PilaComponent
   ],
   imports: [
     BrowserModule,

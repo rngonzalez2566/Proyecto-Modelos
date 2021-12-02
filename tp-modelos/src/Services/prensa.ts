@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { helper_services } from './helper';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable(
     {
@@ -12,6 +13,7 @@ export class prensa_services {
 
   constructor(private http:HttpClient, private helperServices:helper_services) { }
   private url:string = environment.api_gateway;
+  public observerPrensa: Subject<boolean> = new BehaviorSubject<boolean>(false);
   
   public async ObtenerPrensa(id:number){
     return await new Promise<any>((resolve, reject) => {
@@ -73,9 +75,9 @@ export class prensa_services {
       });
   }
 
-  public async AgregarBultoAPrensa(bulto:number,brazo:number,prensa:number){
+  public async AgregarBultoAPrensa(brazo:number,prensa:number){
     return await new Promise<any>((resolve, reject) => {
-        this.http.post(`${this.url}AgregarBultoAPrensa/${bulto}/${brazo}/${prensa}`,this.helperServices.header_peticiones())
+        this.http.post(`${this.url}AgregarBultoAPrensa/${brazo}/${prensa}`,this.helperServices.header_peticiones())
           .subscribe((res: any) => {
             if (res.statusCode != 200) {
               reject(res);              

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { bulto_services } from 'src/Services/bulto';
 
 @Component({
@@ -11,10 +12,18 @@ export class BultoComponent implements OnInit {
   constructor(private bultoServices:bulto_services) { }
 
   
-  public bultos:number = this.bultoServices.bultos;
+  public bultos:number = 0;
+  public suscripcionBultos!: Subscription;
 
   public async ngOnInit() {
     await this.obtenerbultos();
+    this.suscripcionBultos = await this.bultoServices.cambioBultos.subscribe((res: any) =>{
+      if (res == true){
+        this.obtenerbultos().then(async () =>{
+          await this.bultoServices.cambioBultos.next(false);
+        })
+      }
+    })
     
   }
 
@@ -29,8 +38,7 @@ export class BultoComponent implements OnInit {
 
   public async obtenerbultos() {
     await this.bultoServices.ObtenerTodosLosBultos().then((res:any)=>{
-      this.bultoServices.bultos = res.length  
-      this.bultos = this.bultoServices.bultos ;
+      this.bultos = res.length        
     })
   }
 
