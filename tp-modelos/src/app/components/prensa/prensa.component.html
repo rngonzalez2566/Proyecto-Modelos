@@ -10,7 +10,12 @@
             <input type="radio" class="btn-check" name="options-outlined2" id="danger-outlined2" autocomplete="off" [checked]="estado == false" (click)="apagarPrensa()">  
             <label class="btn btn-outline-danger rounded-0" for="danger-outlined2">Off</label>
         </div>
-        <div class="card-body">
+        <div class="card-body" [style]="ChequearEstado()">
+            
+                <!-- <label for="inputZip" class="form-label text-center">Bulto en Brazo</label> -->
+                <h3 class="text-center" id="estado" >LIBRE</h3>
+                <!-- <input type="text" class="form-control text-center" id="inputZip" readonly value="{{estadoPrensa}}" type = "hidden" > -->
+            
         </div>                      
     </div>
 

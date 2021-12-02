@@ -20,17 +20,23 @@ export class PilaComponent implements OnInit {
 
     await this.ObtenerPila();
 
-    this.suscripcionPrensa = await this.prensaService.observerPrensa.subscribe((res: any) =>{
-      console.log('OBSERVER PRENSA: ', res);
+    this.suscripcionPrensa = await this.prensaService.observerPrensa.subscribe(async (res: any) =>{
+      
      if (res == true){
-        this.ObtenerPila();
+      
+
+        await this.ObtenerPila();
+     
+       
      }
    })
+  
   }
 
 
   public async ObtenerPila(){
     await this.servicesPila.obtenerPila().then((res:any)=>{
+      
         this.cantPila = res.length;
     })
   }

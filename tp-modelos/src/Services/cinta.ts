@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { helper_services } from './helper';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable(
     {
@@ -12,6 +13,9 @@ export class cinta_services {
 
   constructor(private http:HttpClient, private helperServices:helper_services) { }
   private url:string = environment.api_gateway;
+
+  public observerBotonPasar: Subject<boolean> = new BehaviorSubject<boolean>(false)
+
   
   public async obtenerCinta(id:number){
     return await new Promise<any>((resolve, reject) => {
